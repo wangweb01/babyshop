@@ -30,7 +30,7 @@ app.use(session({
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use(express.static('./static'));
+app.use(express.static(__dirname + '/static'));
 
 app.use('/index', index);
 app.use('/single-product', singleProduct);

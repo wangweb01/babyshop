@@ -98,9 +98,9 @@ VALUES
 /****** 首页广告商品 ******/
 INSERT INTO bs_index_banner
 VALUES
-('./images/banner/banner-1.jpg', '首页广告商品1', 'single_product.html?pid=1'),
-('./images/banner/banner-2.jpg', '首页广告商品2', 'single_product.html?pid=2'),
-('./images/banner/banner-3.jpg', '首页广告商品3', 'single_product.html?pid=3');
+('images/banner/banner-1.jpg', '首页广告商品1', 'single_product.html?pid=1'),
+('images/banner/banner-2.jpg', '首页广告商品2', 'single_product.html?pid=2'),
+('images/banner/banner-3.jpg', '首页广告商品3', 'single_product.html?pid=3');
 
 /****** 单个商品详情页面 ******/
 INSERT INTO bs_product
