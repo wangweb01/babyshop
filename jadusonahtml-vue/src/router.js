@@ -36,13 +36,13 @@ export default new Router({
                 {path: '/', component: Index},
                 {path: '/index', component: Index},
                 {path: '/single-product/:pid', component: SingleProduct, props: true},
-                {path: '/shop/:kw', component: Shop, props: true}
+                {path: '/shop/:kw/:page', component: Shop, props: true}
             ]
         },
         {
             path: '/login-register',
             component: LoginRegister
-        },
-        {path: '/*', component: NotFound}
+        }
+        // {path: '/*', component: NotFound}
     ]
 })

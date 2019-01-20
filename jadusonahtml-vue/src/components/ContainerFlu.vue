@@ -38,12 +38,13 @@
 
         data: function () {
             return {
-                kw: ''
+                kw: '',
+                page: 1
             }
         },
         methods: {
             search() {
-                this.$router.push('/shop/' + this.kw)
+                this.$router.push('/shop/' + this.kw + '/' + this.page)
             }
         }
     }

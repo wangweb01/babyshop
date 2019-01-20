@@ -2,13 +2,13 @@
     <div id="shop">
         <div class="container">
             <div class="row">
-                <div v-for="s in res.shop" class="col-md-3">
+                <div class="col-md-3" v-for="d in result.data" :key="result.data.id">
                     <!--<img src="/images/product/product-1.jpg" alt="">-->
-                    <img :src="s.sm" alt="">
+                    <img :src="d.sm" alt="">
                     <div class="content">
                         <div class="content-left">
                             <!--<h5><a href="#">Tmart Baby Dress</a></h5>-->
-                            <h5><a href="#">{{s.title}}</a></h5>
+                            <h5><a href="#">{{d.title}}</a></h5>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -20,18 +20,11 @@
                         </div>
                     </div>
                 </div>
-                <!--
-                                <div class="col-md-3">
-                                    <img src="/images/product/product-2.jpg" alt="">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="/images/product/product-3.jpg" alt="">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="/images/product/product-4.jpg" alt="">
-                                </div>
-                -->
-                <!--TODO-->
+            </div>
+            <div class="row">
+                <ul>
+                    <li><input type="text" v-model="page"></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -43,27 +36,36 @@
 
         data: function () {
             return {
-                res: {
-                    shop: [{sm: '', title: ''}]
+                // page: '',
+                result: {
+                    data: [{pid: '', title: '', sm: ''}]
                 }
             }
         },
-        props: ['kw'],
+        watch: {
+            result(val) {
+                console.log('ress >>>', val.data)
+            }
+        },
+        props: ['kw', 'page'],
         mounted() {
             this.axios.get(
                 'http://localhost:3003/shop',
-                {params: {kwords: this.kw, pno: 0}}
+                {params: {kword: this.kw, pno: this.page}}
             ).then(res => {
-                this.res = res.data;
+                this.result = res.data;
+                console.log('page >>>',this.page)
+                console.log('shop >>>', res.data)
             })
-        },
-        /*
-                watch: {
-                    res(val) {
-                        console.log('res >>>', val);
-                    }
-                }
-        */
+        }
+/*
+        methods:{
+            subm(){
+
+            }
+        }
+*/
+
     }
 </script>
 
