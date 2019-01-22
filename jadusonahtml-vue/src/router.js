@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 
 import SingleProduct from './views/SingleProduct'
 import Index from './views/Index'
-import LoginRegister from './views/LoginRegister'
+import Login from './views/Login'
 import Shop from './views/Shop'
 import NotFound from './views/NotFound'
 
@@ -33,16 +33,13 @@ export default new Router({
             path: '/',
             component: Home,
             children: [
-                {path: '/', component: Index},
+                {path: '/', redirect: '/index'},
                 {path: '/index', component: Index},
                 {path: '/single-product/:pid', component: SingleProduct, props: true},
                 {path: '/shop/:kw/:page', component: Shop, props: true}
             ]
         },
-        {
-            path: '/login-register',
-            component: LoginRegister
-        }
+        {path: '/login/:back', component: Login, props: true}
         // {path: '/*', component: NotFound}
     ]
 })

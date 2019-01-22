@@ -10,9 +10,10 @@
             <div class="col" style="display: flex;justify-content: flex-end;">
                 <p>My Account</p>
                 <p v-if="!islogin">
-                    <router-link to="/login-register">Login</router-link>
+                    <!--<router-link to="/login">Login</router-link>-->
+                    <a href="#" @click.prevent="toSignin">Login</a>
                 </p>
-                <p v-else>welcome {{uname}} |
+                <p v-else>welcome {{name}} |
                     <button @click="signout()">注销</button>
                 </p>
             </div>
@@ -28,19 +29,27 @@
         data: function () {
             return {
                 islogin: false,
-                uname: ''
+                name: ''
             }
         },
         methods: {
+            toSignin() {
+                var path = this.$route.path;
+                this.$router.push("/login/" + encodeURIComponent(path.slice(1)));
+            },
             signout() {
-                this.axios.get('http://localhost:3003/user/signout')
+                this.axios.get('http://localhost:3003/user/signout').then(res => {
+                    if (res.data.ok == 2) {
+                        this.islogin = false;
+                    }
+                })
             }
         },
         mounted() {
-            this.axios.get('http://localhost:3003/user/islogin').then(res => {
-                if (res.data.ok === 1) {
+            this.axios.get('http://localhost:3003/user/issignin').then(res => {
+                if (res.data.ok == 1) {
                     this.islogin = true;
-                    this.uname = res.data.uname;
+                    this.name = res.data.name;
                 }
             })
         }

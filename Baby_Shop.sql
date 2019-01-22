@@ -3,6 +3,27 @@ DROP DATABASE IF EXISTS bs;
 CREATE DATABASE bs CHARSET = UTF8;
 USE bs;
 
+/****** 用户登录 ******/
+CREATE TABLE bs_signin
+(
+  sid    INT PRIMARY KEY AUTO_INCREMENT,
+  uname VARCHAR(25) NOT NULL DEFAULT '',
+  upwd  VARCHAR(32) NOT NULL DEFAULT ''
+);
+
+/****** 用户信息 ******/
+CREATE TABLE bs_user
+(
+  uid       INT PRIMARY KEY AUTO_INCREMENT,
+  email     VARCHAR(64),
+  phone     VARCHAR(16),
+  # 头像图片路径
+  avatar    VARCHAR(128),
+  # 用户名,如: 小明
+  user_name VARCHAR(32),
+  # 性别 0-女 1-男
+  gender    INT
+);
 
 /****** 商品同款家族 ******/
 CREATE TABLE bs_product_family
@@ -67,43 +88,39 @@ CREATE TABLE bs_product_pic
   lg         VARCHAR(128)
 );
 
-/****** 用户信息 ******/
-CREATE TABLE bs_user
-(
-  uid       INT PRIMARY KEY AUTO_INCREMENT,
-  uname     VARCHAR(32),
-  upwd      VARCHAR(32),
-  email     VARCHAR(64),
-  phone     VARCHAR(16),
-  # 头像图片路径
-  avatar    VARCHAR(128),
-  # 用户名,如: 小明
-  user_name VARCHAR(32),
-  # 性别 0-女 1-男
-  gender    INT
-);
 
+/****** 用户登录 data ******/
+INSERT INTO bs_signin(sid, uname, upwd)
+VALUES
+(NULL, 'WangY', md5('123456')),
+(NULL, 'XiaoM', md5('654321'));
+
+/****** 用户信息 data ******/
+INSERT INTO bs_user(uid, email, phone, avatar, user_name, gender)
+VALUES
+(NULL, '123456@qq.com', '15312345678', 'img/1.jpg', 'WangY', '1'),
+(NULL, '654321@qq.com', '15387654321', 'img/2.jpg', 'xiaom', '0');
 
 /****** 商品同款家族 data ******/
-INSERT INTO bs_product_family
+INSERT INTO bs_product_family(family_id, fname)
 VALUES
   (100, '第一款商品');
 
 /****** 首页轮播广告商品 data ******/
-INSERT INTO bs_index_carousel
+INSERT INTO bs_index_carousel(cid, img, title, href)
 VALUES
 (NULL, './images/hero/hero-1.jpg', '轮播广告商品1', 'single_product.html?pid=1'),
 (NULL, './images/hero/hero-2.jpg', '轮播广告商品2', 'single_product.html?pid=2');
 
 /****** 首页广告商品 data ******/
-INSERT INTO bs_index_banner
+INSERT INTO bs_index_banner(img, title, href)
 VALUES
   ('images/banner/banner-1.jpg', '首页广告商品1', 'single_product.html?pid=1'),
   ('images/banner/banner-2.jpg', '首页广告商品2', 'single_product.html?pid=2'),
   ('images/banner/banner-3.jpg', '首页广告商品3', 'single_product.html?pid=3');
 
 /****** 单个商品详情页面 data ******/
-INSERT INTO bs_product
+INSERT INTO bs_product(pid, family_id, title, details, spec, pic, price)
 VALUES
 (1, 100, 'Tmart Baby Dress',
  '1 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
@@ -156,7 +173,7 @@ VALUES
 
 
 /****** 商品图片 data ******/
-INSERT INTO bs_product_pic
+INSERT INTO bs_product_pic(picid, product_id, sm, md, lg)
 VALUES
 (NULL, 1, './images/product/product-1.jpg', './images/product/product-big-1.jpg',
  './images/product/product-zoom-1.jpg'),
@@ -192,12 +209,6 @@ VALUES
  './images/product/product-zoom-7.jpg'),
 (NULL, 8, './images/product/product-8.jpg', './images/product/product-big-8.jpg',
  './images/product/product-zoom-8.jpg');
-
-/****** 用户信息 value ******/
-INSERT INTO bs_user
-VALUES
-(NULL, 'WangY', '123456', '123456@qq.com', '15312345678', 'img/1.jpg', 'WangY', '1'),
-(NULL, 'xiaom', '654321', '654321@qq.com', '15387654321', 'img/2.jpg', 'xiaom', '0');
 
 
 

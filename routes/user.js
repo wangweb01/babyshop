@@ -4,21 +4,23 @@ const pool = require("../pool");
 
 router.post('/signin', (req, res) => {
     var {uname, upwd} = req.body;
+    console.log(uname,upwd)
     /*
         res.writeHead(200);
         res.write(JSON.stringify({req}));
     */
-    var sql = `SELECT *
-               FROM bs_user
+    var sql = `SELECT sid
+               FROM bs_signin
                WHERE uname = ?
-                 AND upwd = ?`;
+                 AND upwd = (md5(?))`;
     pool.query(sql, [uname, upwd], (err, result) => {
         if (err)
             console.error(err);
-        if (result.length > 0) {
+        // var id = result[0].id;
+// console.log(id)
+        if (result.length == 1) {
             res.writeHead(200);
-            var user = result[0];
-            req.session.uid = user.uid;
+            req.session.userId = result[0].sid;
             res.write(JSON.stringify({ok: 1, msg: '登录成功！'}));
         } else {
             res.write(JSON.stringify({ok: 0, msg: '用户名或密码错误！'}))
@@ -27,18 +29,18 @@ router.post('/signin', (req, res) => {
     })
 });
 
-router.get('/islogin', (req, res) => {
-    var uid = req.session.uid;
+router.get('/issignin', (req, res) => {
+    var userId = req.session.userId;
     res.writeHead(200);
-    if (uid === undefined || uid === null) {
+    if (userId === undefined || userId === null) {
         res.write(JSON.stringify({ok: 0, msg: '用户未登录！'}));
         res.end();
     } else {
-        var sql = `SELECT *
+        var sql = `SELECT user_name
                    FROM bs_user
                    WHERE uid = ?`;
-        pool.query(sql, [uid], (err, result) => {
-            res.write(JSON.stringify({ok: 1, uname: result[0].uname}));
+        pool.query(sql, [userId], (err, result) => {
+            res.write(JSON.stringify({ok: 1, name: result[0].user_name}));
             res.end();
         });
     }
@@ -47,7 +49,7 @@ router.get('/islogin', (req, res) => {
 router.get('/signout', (req, res) => {
     res.writeHead(200);
     res.write(JSON.stringify({ok: 2, msg: '已退出登录！'}));
-    req.session.uid = undefined;
+    req.session.userId = undefined;
     res.end();
 });
 

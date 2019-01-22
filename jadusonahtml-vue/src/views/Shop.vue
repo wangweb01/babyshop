@@ -36,7 +36,7 @@
 
         data: function () {
             return {
-                // page: '',
+                page: '',
                 result: {
                     data: [{pid: '', title: '', sm: ''}]
                 }

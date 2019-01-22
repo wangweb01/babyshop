@@ -12,12 +12,17 @@
                     <h3>Log in</h3>
                 </div>
                 <div class="input-group">
-                    <input type="text" name="uname" value="wangy" class="form-control" placeholder="Enter User Name">
+                    <input type="text" name="uname" v-model="uname" value="" class="form-control"
+                           placeholder="Enter User Name">
                     <span class="input-group-addon"><i class="zmdi zmdi-account-circle"></i></span>
                 </div>
                 <div class="input-group">
-                    <input type="password" name="upwd" value="123456" class="form-control" placeholder="Password">
-                    <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+                    <input type="password" name="upwd" v-model="upwd" value="" class="form-control"
+                           placeholder="Password">
+                    <span class="input-group-addon">
+                        <i v-if="status" class="zmdi zmdi-lock"></i>
+                        <strong class="error" v-else>账号或密码错误</strong>
+                    </span>
                 </div>
                 <div>
                     <input type="button" value="SIGN IN" class="btn btn-primary btn-lg btn-round btn-block"
@@ -32,10 +37,17 @@
     export default {
         name: "login-register",
 
+        props: ['back'],
         data: function () {
             return {
-                uname: 'WangY',
-                upwd: '123456'
+                uname: '',
+                upwd: '',
+                status: true
+            }
+        },
+        watch: {
+            back(val) {
+                console.log('aa>>>', val)
             }
         },
         methods: {
@@ -45,7 +57,10 @@
                     Qs.stringify({uname: this.uname, upwd: this.upwd})
                 ).then(res => {
                     if (res.data.ok == 1) {
-                        console.log('res.data >>>',res.data)
+                        this.$router.push('/' + decodeURIComponent(this.back));
+                    } else {
+                        this.status = false;
+                        console.log('res.data >>>', res.data)
                     }
                 })
             }
@@ -64,6 +79,17 @@
             background-color: rgba(0,0,0,0.4);
         }
     */
+    .error {
+        color: red;
+        /*
+                        -webkit-transition: color 2s linear 0s;
+                        -moz-transition: color 2s linear 0s;
+                        -ms-transition: color 2s linear 0s;
+                        -o-transition: color 2s linear 0s;
+                        transition: color 2s linear 0s;
+        */
+    }
+
     input::-webkit-input-placeholder {
         /* WebKit browsers */
         color: #FFF;
