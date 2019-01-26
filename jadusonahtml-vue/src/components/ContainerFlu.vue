@@ -21,7 +21,7 @@
                         <form action="#">
                             <input placeholder="Type and hit enter" type="text" v-model="kw" @keyup.13="search">
                             <!--<input placeholder="Type and hit enter" type="text" v-model="kw">-->
-                            <button @click="search"><img src="/images/icons/search.png" alt=""></button>
+                            <button @click.prevent="search"><img src="/images/icons/search.png" alt=""></button>
                         </form>
                     </div>
                 </li>
@@ -44,7 +44,8 @@
         },
         methods: {
             search() {
-                this.$router.push('/shop/' + this.kw + '/' + this.page)
+                this.$router.push('/shop/' + this.kw + '/' + this.page);
+                console.log(this.$router.push('/shop/' + this.kw + '/' + this.page))
             }
         }
     }

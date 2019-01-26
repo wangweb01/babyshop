@@ -2,9 +2,17 @@
     <div id="shop">
         <div class="container">
             <div class="row">
-                <div class="col-md-3" v-for="d in result.data" :key="result.data.id">
-                    <!--<img src="/images/product/product-1.jpg" alt="">-->
-                    <img :src="d.sm" alt="">
+                <div class="product-item col-md-3" v-for="d in result.data" :key="result.data.id">
+                    <div class="image">
+                        <!--<img src="/images/product/product-1.jpg" alt="">-->
+                        <img :src="d.sm" alt="">
+                        <div class="img-overlay">
+                            <div class="action-bottons">
+                                <button>add to cart</button>
+                                <!--<button>add to cart</button>-->
+                            </div>
+                        </div>
+                    </div>
                     <div class="content">
                         <div class="content-left">
                             <!--<h5><a href="#">Tmart Baby Dress</a></h5>-->
@@ -21,11 +29,13 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <ul>
-                    <li><input type="text" v-model="page"></li>
-                </ul>
-            </div>
+            <!--
+                        <div class="row">
+                            <ul>
+                                <li><input type="text" v-model="page"></li>
+                            </ul>
+                        </div>
+            -->
         </div>
     </div>
 </template>
@@ -36,7 +46,6 @@
 
         data: function () {
             return {
-                page: '',
                 result: {
                     data: [{pid: '', title: '', sm: ''}]
                 }
@@ -54,24 +63,52 @@
                 {params: {kword: this.kw, pno: this.page}}
             ).then(res => {
                 this.result = res.data;
-                console.log('page >>>',this.page)
+                console.log('page >>>', this.page)
                 console.log('shop >>>', res.data)
             })
         }
-/*
-        methods:{
-            subm(){
-
-            }
-        }
-*/
-
     }
 </script>
 
 <style scoped>
     img {
         width: 100%;
+    }
+
+    .product-item .image {
+        position: relative;
+    }
+
+    .img-overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(148, 199, 235, 0.7);
+    }
+
+    .img-overlay .action-bottons {
+
+    }
+
+    .img-overlay .action-bottons button {
+        font-family: "Dosis", sans-serif;
+        width: 160px;
+        height: 45px;
+        font-size: 14px;
+        font-weight: 700;
+        /*line-height: 23px; */
+        background-color: #ffffff;
+        color: #323132;
+    }
+    .img-overlay .action-bottons button:hover {
+        background-color: #ff708a;
+        /*border-color: #ff708a;*/
+        color: #ffffff;
     }
 
     .content {

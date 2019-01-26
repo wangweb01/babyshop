@@ -39,7 +39,7 @@ export default new Router({
                 {path: '/shop/:kw/:page', component: Shop, props: true}
             ]
         },
-        {path: '/login/:back', component: Login, props: true}
-        // {path: '/*', component: NotFound}
+        {path: '/login/:back', component: Login, props: true},
+        {path: '/*', component: NotFound}
     ]
 })

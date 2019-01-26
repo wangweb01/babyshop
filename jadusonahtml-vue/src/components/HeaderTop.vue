@@ -11,10 +11,10 @@
                 <p>My Account</p>
                 <p v-if="!islogin">
                     <!--<router-link to="/login">Login</router-link>-->
-                    <a href="#" @click.prevent="toSignin">Login</a>
+                    <a href="#" @click.prevent="toSignin">Signin</a>
                 </p>
-                <p v-else>welcome {{name}} |
-                    <button @click="signout()">注销</button>
+                <p v-else>welcome {{name}}
+                    <a href="#" @click="signout()"> | 注销</a>
                 </p>
             </div>
             <!--</div>-->
