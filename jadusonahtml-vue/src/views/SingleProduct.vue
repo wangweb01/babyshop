@@ -39,10 +39,14 @@
                     <div class="row">
                         <div class="col quantity">
                             <span>Quantity:</span>
-                            <div class="pro-qty">
-                                <span class="minus">-</span>
-                                <input type="text" value="1">
-                                <span class="plus">+</span></div>
+                            <el-input-number v-model="num1" @change="handleChange" :min="1" :max="999"
+                                             label="描述文字" size="mini"></el-input-number>
+                            <!--
+                                                        <div class="pro-qty">
+                                                            <span class="minus">-</span>
+                                                            <input type="text" value="1">
+                                                            <span class="plus">+</span></div>
+                            -->
                         </div>
                         <div class="col color d-inline-block">
                             <span>Color:</span>
@@ -66,6 +70,7 @@
         props: ['pid'],
         data() {
             return {
+                num1: 1,
                 res: {
                     pics: [{lg: ''}, {lg: ''}, {lg: ''}, {lg: ''}],
                     product: {},

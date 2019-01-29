@@ -115,9 +115,9 @@ VALUES
 /****** 首页广告商品 data ******/
 INSERT INTO bs_index_banner(img, title, href)
 VALUES
-  ('images/banner/banner-1.jpg', '首页广告商品1', 'single_product.html?pid=1'),
-  ('images/banner/banner-2.jpg', '首页广告商品2', 'single_product.html?pid=2'),
-  ('images/banner/banner-3.jpg', '首页广告商品3', 'single_product.html?pid=3');
+  ('images/banner/banner-1.jpg', 'New Arrival <br>Baby''s Shoe <br>GET 30% OFF', 'single_product.html?pid=1'),
+  ('images/banner/banner-2.jpg', 'New Toy’s for your Baby', 'single_product.html?pid=2'),
+  ('images/banner/banner-3.jpg', 'Trendy <br>Collections', 'single_product.html?pid=3');
 
 /****** 单个商品详情页面 data ******/
 INSERT INTO bs_product(pid, family_id, title, details, spec, pic, price)

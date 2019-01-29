@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
     };
 
     Promise.all([
+        // 首页轮播
         (function () {
             return new Promise(function (open) {
                 var sql = `SELECT img
@@ -24,9 +25,10 @@ router.get('/', (req, res) => {
                 })
             })
         })(),
+        // 首页广告
         (function () {
             return new Promise(function (open) {
-                var sql = `SELECT img, href
+                var sql = `SELECT img, title, href
                            FROM bs_index_banner`;
                 pool.query(sql, (err, result) => {
                     if (err)

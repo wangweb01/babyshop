@@ -6,7 +6,8 @@
                 <div class="col-md-4">
                     <div class="card-img">
                         <div class="content">
-                            <h1>New Arrival <br>Baby's Shoe <br>GET 30% OFF</h1>
+                            <!--<h1>New Arrival <br>Baby's Shoe <br>GET 30% OFF</h1>-->
+                            <h1 v-html="banner[0].title"></h1>
                             <!--<a href="#" data-hover="SHOP NOW">SHOP NOW</a>-->
                             <router-link :to="banner[0].href|getPid" data-hover="SHOP NOW">SHOP NOW</router-link>
                         </div>
@@ -17,7 +18,8 @@
                 <div class="col-md-4">
                     <div class="card-img" style="position: relative;">
                         <div class="content-c">
-                            <h1>New Toy’s for your Baby</h1>
+                            <!--<h1>New Toy’s for your Baby</h1>-->
+                            <h1 v-html="banner[1].title"></h1>
                         </div>
                         <!--<a href="#"><img class="img-fluid" src="/images/banner/banner-2.jpg" alt=""></a>-->
                         <a href="#"><img class="img-fluid" :src="banner[1].img" alt=""></a>
@@ -26,6 +28,10 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card-img">
+                        <div class="content">
+                            <h1 v-html="banner[2].title"></h1>
+                            <router-link :to="banner[2].href|getPid" data-hover="SHOP NOW">SHOP NOW</router-link>
+                        </div>
                         <!--<a href="#"><img class="img-fluid" src="/images/banner/banner-3.jpg" alt=""></a>-->
                         <a href="#"><img class="img-fluid" :src="banner[2].img" alt=""></a>
                     </div>
@@ -45,6 +51,7 @@
 
     export default {
         name: "banner",
+
         props: ['banner'],
         // data() {
         //     return {
@@ -53,13 +60,11 @@
         //
         //
         // },
-        /*
-                watch: {
-                    banner(val) {
-                        console.log('banner >>>', val)
-                    }
-                }
-        */
+        watch: {
+            banner(val) {
+                console.log('banner >>>', val)
+            }
+        }
     }
 </script>
 
