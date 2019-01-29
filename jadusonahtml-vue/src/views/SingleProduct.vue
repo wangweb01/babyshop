@@ -56,6 +56,9 @@
                             <!--<a style="background-color: #FF502E"></a>-->
                             <!--</div>-->
                         </div>
+                        <el-row>
+                            <el-button type="danger" round>加入购物车</el-button>
+                        </el-row>
                     </div>
                 </div>
             </div>
