@@ -6,6 +6,7 @@ import SingleProduct from './views/SingleProduct'
 import Index from './views/Index'
 import Login from './views/Login'
 import Shop from './views/Shop'
+import Cart from './views/Cart'
 import NotFound from './views/NotFound'
 
 Vue.use(Router);
@@ -36,7 +37,8 @@ export default new Router({
                 {path: '/', redirect: '/index'},
                 {path: '/index', component: Index},
                 {path: '/single-product/:pid', component: SingleProduct, props: true},
-                {path: '/shop/:kw/:page', component: Shop, props: true}
+                {path: '/shop/:kw/:page', component: Shop, props: true},
+                {path: '/cart', component: Cart}
             ]
         },
         {path: '/login/:back', component: Login, props: true},

@@ -9,7 +9,6 @@
                         <div class="img-overlay">
                             <div class="action-bottons">
                                 <button>add to cart</button>
-                                <!--<button>add to cart</button>-->
                             </div>
                         </div>
                     </div>
@@ -88,11 +87,29 @@
         top: 0;
         width: 100%;
         height: 100%;
+        opacity: 0;
+    }
+    .img-overlay:hover {
+        opacity: 1;
         background-color: rgba(148, 199, 235, 0.7);
+        -webkit-transition: all 500ms ease-in 0s;
+        -moz-transition: all 500ms ease-in 0s;
+        -ms-transition: all 500ms ease-in 0s;
+        -o-transition: all 500ms ease-in 0s;
+        transition: all 500ms ease-in 0s;
     }
 
-    .img-overlay .action-bottons {
-
+    .img-overlay:hover .action-bottons {
+        -webkit-transition: all 500ms ease-in 0s;
+        -moz-transition: all 500ms ease-in 0s;
+        -ms-transition: all 500ms ease-in 0s;
+        -o-transition: all 500ms ease-in 0s;
+        transition: all 500ms ease-in 0s;
+        -webkit-transform: translateY(-30px);
+        -moz-transform: translateY(-30px);
+        -ms-transform: translateY(-30px);
+        -o-transform: translateY(-30px);
+        transform: translateY(-30px);
     }
 
     .img-overlay .action-bottons button {

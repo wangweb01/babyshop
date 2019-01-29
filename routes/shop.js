@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     if (!obj.pno)
         obj.pno = 1;
     if (!pageSize)
-        obj.pageSize = 4;
+        obj.pageSize = 8;
     var reg = /^[0-9]{1,9}$/;
     if (!reg.test(obj.pno)) {
         res.send({code: -1, msg: "页码格式不正确"});

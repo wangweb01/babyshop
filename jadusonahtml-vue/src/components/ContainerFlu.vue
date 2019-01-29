@@ -13,19 +13,20 @@
                             <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
                         </ul>
             -->
-
             <ul class="col navbar-nav" style="display: flex;justify-content: flex-end;">
                 <li class="nav-item">
                     <!--<button><img src="/images/icons/search.png" alt=""></button>-->
                     <div class="header-search-wrap">
                         <form action="#">
                             <input placeholder="Type and hit enter" type="text" v-model="kw" @keyup.13="search">
-                            <!--<input placeholder="Type and hit enter" type="text" v-model="kw">-->
                             <button @click.prevent="search"><img src="/images/icons/search.png" alt=""></button>
                         </form>
                     </div>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
+                <!--<li class="nav-item"><a class="nav-link" href="#">HOME</a></li>-->
+                <li class="nav-item"><router-link to="/cart" class="nav-link" href="#">
+                    <img src="images/icons/cart.png" alt=""><span>02($250)</span>
+                </router-link></li>
                 <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
             </ul>
         </nav>
