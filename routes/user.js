@@ -67,6 +67,14 @@ router.get('/addCart', (req, res) => {
     });
 });
 
+router.get('/getCarts', (req, res) => {
+    var sql = `SELECT cart.scid, cart.user_id, cart.count, prod.price, prod.title
+               FROM bs_shoppingcart cart,
+                    bs_product prod
+               WHERE cart.scid = prod.pid
+                 AND cart.user_id = ?`;
+});
+
 module.exports = router;
 
 
