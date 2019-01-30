@@ -6,7 +6,7 @@ USE bs;
 /****** 用户登录 ******/
 CREATE TABLE bs_signin
 (
-  sid    INT PRIMARY KEY AUTO_INCREMENT,
+  sid   INT PRIMARY KEY AUTO_INCREMENT,
   uname VARCHAR(25) NOT NULL DEFAULT '',
   upwd  VARCHAR(32) NOT NULL DEFAULT ''
 );
@@ -23,6 +23,16 @@ CREATE TABLE bs_user
   user_name VARCHAR(32),
   # 性别 0-女 1-男
   gender    INT
+);
+
+/****** 购物车 ******/
+CREATE TABLE bs_shoppingcart
+(
+  scid       INT PRIMARY KEY AUTO_INCREMENT,
+  user_id    INT,
+  product_id INT,
+  count      INT,
+  is_checked TINYINT
 );
 
 /****** 商品同款家族 ******/
@@ -92,15 +102,19 @@ CREATE TABLE bs_product_pic
 /****** 用户登录 data ******/
 INSERT INTO bs_signin(sid, uname, upwd)
 VALUES
-(NULL, 'WangY', md5('123456')),
-(NULL, 'XiaoM', md5('654321'));
+  (NULL, 'WangY', md5('123456')),
+  (NULL, 'XiaoM', md5('654321'));
 
 /****** 用户信息 data ******/
 INSERT INTO bs_user(uid, email, phone, avatar, user_name, gender)
 VALUES
-(NULL, '123456@qq.com', '15312345678', 'img/1.jpg', 'WangY', '1'),
-(NULL, '654321@qq.com', '15387654321', 'img/2.jpg', 'xiaom', '0');
+  (NULL, '123456@qq.com', '15312345678', 'img/1.jpg', 'WangY', '1');
+# (NULL, '654321@qq.com', '15387654321', 'img/2.jpg', 'xiaom', '0');
 
+/****** 购物车 data ******/
+/*INSERT INTO bs_shoppingcart(scid, user_id, product_id, count, is_checked)
+VALUES (NULL,NULL,);
+*/
 /****** 商品同款家族 data ******/
 INSERT INTO bs_product_family(family_id, fname)
 VALUES
@@ -115,9 +129,9 @@ VALUES
 /****** 首页广告商品 data ******/
 INSERT INTO bs_index_banner(img, title, href)
 VALUES
-  ('images/banner/banner-1.jpg', 'New Arrival <br>Baby''s Shoe <br>GET 30% OFF', 'single_product.html?pid=1'),
-  ('images/banner/banner-2.jpg', 'New Toy’s for your Baby', 'single_product.html?pid=2'),
-  ('images/banner/banner-3.jpg', 'Trendy <br>Collections', 'single_product.html?pid=3');
+('images/banner/banner-1.jpg', 'New Arrival <br>Baby''s Shoe <br>GET 30% OFF', 'single_product.html?pid=1'),
+('images/banner/banner-2.jpg', 'New Toy’s for your Baby', 'single_product.html?pid=2'),
+('images/banner/banner-3.jpg', 'Trendy <br>Collections', 'single_product.html?pid=3');
 
 /****** 单个商品详情页面 data ******/
 INSERT INTO bs_product(pid, family_id, title, details, spec, pic, price)
@@ -170,7 +184,6 @@ VALUES
 (16, 100, 'Lattic Shirt',
  '4 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'red', 'images/product/product-8.jpg', 08);
-
 
 /****** 商品图片 data ******/
 INSERT INTO bs_product_pic(picid, product_id, sm, md, lg)

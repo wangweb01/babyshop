@@ -4,7 +4,7 @@ const pool = require("../pool");
 
 router.post('/signin', (req, res) => {
     var {uname, upwd} = req.body;
-    console.log(uname,upwd)
+    console.log(uname, upwd)
     /*
         res.writeHead(200);
         res.write(JSON.stringify({req}));
@@ -17,7 +17,7 @@ router.post('/signin', (req, res) => {
         if (err)
             console.error(err);
         // var id = result[0].id;
-// console.log(id)
+        // console.log(id)
         if (result.length == 1) {
             res.writeHead(200);
             req.session.userId = result[0].sid;
@@ -51,6 +51,20 @@ router.get('/signout', (req, res) => {
     res.write(JSON.stringify({ok: 2, msg: '已退出登录！'}));
     req.session.userId = undefined;
     res.end();
+});
+
+router.get('/addCart', (req, res) => {
+    var uid = req.query.uid;
+    var pid = req.query.pid;
+    var count = req.query.count;
+    var sql = `INSERT INTO bs_shoppingcart(scid, user_id, product_id, count, is_checked)
+               VALUES (NULL, ?, ?, ?, 0)`;
+    pool.query(sql, [uid, pid, count], (err, result) => {
+        if (err) throw err;
+        if (result.affectedRows == 1) {
+            res.send({code: 1, msg: '添加购物车成功！'})
+        }
+    });
 });
 
 module.exports = router;

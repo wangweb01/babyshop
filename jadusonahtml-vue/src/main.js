@@ -7,7 +7,21 @@ import axios from 'axios'
 import vuex from 'vuex'
 
 Vue.use(vuex);
-var store = new vuex.Store({});
+var store = new vuex.Store({
+    state: {
+        cartCount: 0
+    },
+    mutations: {
+        increment(state, count) {
+            state.cartCount += count
+        }
+    },
+    getters: {
+        optCartCount: function (state) {
+            return state.cartCount
+        }
+    }
+});
 
 Vue.use(ElementUI);
 

@@ -39,7 +39,8 @@
                     <div class="row">
                         <div class="col quantity">
                             <span>Quantity:</span>
-                            <el-input-number v-model="num1" @change="handleChange" :min="1" :max="999"
+                            <!--<el-input-number v-model="num1" @change="handleChange" :min="1" :max="999"-->
+                            <el-input-number v-model="num" :min="1" :max="999"
                                              label="描述文字" size="mini"></el-input-number>
                             <!--
                                                         <div class="pro-qty">
@@ -57,7 +58,7 @@
                             <!--</div>-->
                         </div>
                         <el-row>
-                            <el-button type="danger" round>加入购物车</el-button>
+                            <el-button @click="addCart" type="danger" round>加入购物车</el-button>
                         </el-row>
                     </div>
                 </div>
@@ -73,12 +74,17 @@
         props: ['pid'],
         data() {
             return {
-                num1: 1,
+                num: 1,
                 res: {
                     pics: [{lg: ''}, {lg: ''}, {lg: ''}, {lg: ''}],
                     product: {},
                     specs: [{spec: ''}, {spec: ''}, {spec: ''}]
                 }
+            }
+        },
+        methods: {
+            addCart() {
+                this.$store.commit('increment', this.num)
             }
         },
         mounted() {
