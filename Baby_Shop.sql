@@ -28,7 +28,7 @@ CREATE TABLE bs_user
 /****** 购物车 ******/
 CREATE TABLE bs_shoppingcart
 (
-  scid       INT PRIMARY KEY AUTO_INCREMENT,
+  scart_id   INT PRIMARY KEY AUTO_INCREMENT,
   user_id    INT,
   product_id INT,
   count      INT,
@@ -112,13 +112,19 @@ VALUES
 # (NULL, '654321@qq.com', '15387654321', 'img/2.jpg', 'xiaom', '0');
 
 /****** 购物车 data ******/
-/*INSERT INTO bs_shoppingcart(scid, user_id, product_id, count, is_checked)
-VALUES (NULL,NULL,);
-*/
+INSERT INTO bs_shoppingcart(scart_id, user_id, product_id, count, is_checked)
+VALUES (NULL, 1, 100, 1, 0),
+       (NULL, 1, 101, 2, 0);
+
 /****** 商品同款家族 data ******/
 INSERT INTO bs_product_family(family_id, fname)
 VALUES
-  (100, '第一款商品');
+  (100, '第1款商品'),
+  (101, '第2款商品'),
+  (102, '第3款商品'),
+  (103, '第4款商品'),
+  (104, '第5款商品'),
+  (105, '第6款商品');
 
 /****** 首页轮播广告商品 data ******/
 INSERT INTO bs_index_carousel(cid, img, title, href)
@@ -145,43 +151,43 @@ VALUES
 (3, 100, 'Smart Shirt',
  '3 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'blue', 'images/product/product-zoom-3.jpg', 18),
-(4, 100, 'Kids Shoe',
+(4, 101, 'Kids Shoe',
  '4 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'red', 'images/product/product-4.jpg', 15),
-(5, 100, 'Bowknot Bodysuit',
+(5, 101, 'Bowknot Bodysuit',
  '5 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'blue', 'images/product/product-5.jpg', 12),
-(6, 100, 'Striped T-Shirt',
+(6, 101, 'Striped T-Shirt',
  '6 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'red', 'images/product/product-6.jpg', 12),
-(7, 100, 'Kislen Jak Tops',
+(7, 102, 'Kislen Jak Tops',
  '4 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'red', 'images/product/product-7.jpg', 29),
-(8, 100, 'Lattic Shirt',
+(8, 102, 'Lattic Shirt',
  '4 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'red', 'images/product/product-8.jpg', 08),
-(9, 100, 'Tmart Baby Dress',
+(9, 102, 'Tmart Baby Dress',
  '1 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'red', 'images/product/product-zoom-1.jpg', 25),
-(10, 100, 'Jumpsuit Outfits',
+(10, 103, 'Jumpsuit Outfits',
  '2 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'yellow', 'images/product/product-zoom-2.jpg', 09),
-(11, 100, 'Smart Shirt',
+(11, 103, 'Smart Shirt',
  '3 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'blue', 'images/product/product-zoom-3.jpg', 18),
-(12, 100, 'Kids Shoe',
+(12, 103, 'Kids Shoe',
  '4 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'red', 'images/product/product-4.jpg', 15),
-(13, 100, 'Bowknot Bodysuit',
+(13, 104, 'Bowknot Bodysuit',
  '5 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'blue', 'images/product/product-5.jpg', 12),
-(14, 100, 'Striped T-Shirt',
+(14, 104, 'Striped T-Shirt',
  '6 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'red', 'images/product/product-6.jpg', 12),
-(15, 100, 'Kislen Jak Tops',
+(15, 104, 'Kislen Jak Tops',
  '4 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'red', 'images/product/product-7.jpg', 29),
-(16, 100, 'Lattic Shirt',
+(16, 105, 'Lattic Shirt',
  '4 enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform',
  'red', 'images/product/product-8.jpg', 08);
 

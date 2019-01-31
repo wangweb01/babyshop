@@ -57,7 +57,7 @@ router.get('/addCart', (req, res) => {
     var uid = req.query.uid;
     var pid = req.query.pid;
     var count = req.query.count;
-    var sql = `INSERT INTO bs_shoppingcart(scid, user_id, product_id, count, is_checked)
+    var sql = `INSERT INTO bs_shoppingcart(scart_id, user_id, product_id, count, is_checked)
                VALUES (NULL, ?, ?, ?, 0)`;
     pool.query(sql, [uid, pid, count], (err, result) => {
         if (err) throw err;
@@ -68,11 +68,17 @@ router.get('/addCart', (req, res) => {
 });
 
 router.get('/getCarts', (req, res) => {
-    var sql = `SELECT cart.scid, cart.user_id, cart.count, prod.price, prod.title
+    var userId = req.session.userId;
+    var sql = `SELECT cart.scart_id, cart.user_id, cart.count, prod.price, prod.title, prod.pic
                FROM bs_shoppingcart cart,
                     bs_product prod
-               WHERE cart.scid = prod.pid
+               WHERE cart.scart_id = prod.pid
                  AND cart.user_id = ?`;
+    pool.query(sql, [userId], (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send(result)
+    });
 });
 
 module.exports = router;

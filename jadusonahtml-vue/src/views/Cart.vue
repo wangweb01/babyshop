@@ -26,6 +26,47 @@
                         </tr>
                         </tbody>
                     </table>
+                    <h2>aaaaaaaaaaaaaaaa</h2>
+                    <el-table
+                            :data="tableData6"
+                            :span-method="arraySpanMethod"
+                            border
+                            show-summary
+                            style="width: 100%">
+<!--
+                        <el-table-column
+                                prop="id"
+                                label="ID">
+                        </el-table-column>
+-->
+                        <el-table-column width="156" label="IMAGE">
+                                <!--prop="pic"-->
+                            <template slot-scope="scope">
+                                <!--{{scope.row}}-->
+                                <img :src="scope.row.pic" alt="">
+                            </template>
+                        </el-table-column>
+                        <el-table-column
+                                prop="title"
+                                label="PRODUCT">
+                        </el-table-column>
+                        <el-table-column
+                                prop="price"
+                                sortable
+                                label="PRICE">
+                        </el-table-column>
+                        <el-table-column
+                                prop="amount2"
+                                sortable
+                                label="数值 2">
+                        </el-table-column>
+                        <el-table-column
+                                prop="amount3"
+                                sortable
+                                label="数值 3">
+                        </el-table-column>
+                    </el-table>
+
                 </div>
             </div>
         </div>
@@ -34,7 +75,29 @@
 
 <script>
     export default {
-        name: "Cart"
+        name: "Cart",
+
+        data() {
+            return {
+                tableData6: []
+            }
+        },
+        watch:{
+            tableData6(val){
+                console.log('tableData >>>',val)
+            }
+        },
+        methods:{
+            arraySpanMethod({ row, column, rowIndex, columnIndex }){
+                if (rowIndex){}
+            }
+        },
+        mounted() {
+            this.axios.get('http://localhost:3003/user/getCarts').then(res => {
+                console.log('getCarts >>>', res);
+                this.tableData6 = res.data;
+            })
+        }
     }
 </script>
 
@@ -59,10 +122,12 @@
         padding: 15px;
         text-align: center;
     }
+
     .pro-thumbnail {
         width: 160px;
     }
-    .pro-thumbnail img {
+
+    img {
         width: 100%;
     }
 </style>
