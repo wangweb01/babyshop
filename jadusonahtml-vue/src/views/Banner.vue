@@ -60,11 +60,13 @@
         //
         //
         // },
+/*
         watch: {
             banner(val) {
                 console.log('banner >>>', val)
             }
         }
+*/
     }
 </script>
 
