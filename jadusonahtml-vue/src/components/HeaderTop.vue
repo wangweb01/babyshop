@@ -38,7 +38,7 @@
                 this.$router.push("/login/" + encodeURIComponent(path.slice(1)));
             },
             signout() {
-                this.axios.get('http://localhost:3003/user/signout').then(res => {
+                this.axios.get('http://babyshop.applinzi.com/user/signout').then(res => {
                     if (res.data.ok == 2) {
                         this.islogin = false;
                     }
@@ -46,7 +46,7 @@
             }
         },
         mounted() {
-            this.axios.get('http://localhost:3003/user/issignin').then(res => {
+            this.axios.get('http://babyshop.applinzi.com/user/issignin').then(res => {
                 if (res.data.ok == 1) {
                     this.islogin = true;
                     this.name = res.data.name;

@@ -103,7 +103,7 @@
             */
 
             (async () => {
-                var result = await this.axios.get('http://localhost:3003/single-product', {
+                var result = await this.axios.get('http://babyshop.applinzi.com/single-product', {
                     params: {pid: this.pid}
                 });
                 this.res = result.data;

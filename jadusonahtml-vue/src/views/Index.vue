@@ -30,7 +30,7 @@
         },
         mounted() {
             (async () => {
-                var res = await this.axios.get('http://localhost:3003/index');
+                var res = await this.axios.get('http://babyshop.applinzi.com/index');
                 this.res = res.data;
                 // Vue.set(this.res, 'carousel', res.data.carousel);
                 // console.log('res.data >>>',res.data.carousel)

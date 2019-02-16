@@ -50,7 +50,7 @@
         methods: {
             search() {
                 this.$router.push('/shop/' + this.kw + '/' + this.page);
-                console.log(this.$router.push('/shop/' + this.kw + '/' + this.page))
+                // console.log(this.$router.push('/shop/' + this.kw + '/' + this.page))
             }
         }
     }

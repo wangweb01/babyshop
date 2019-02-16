@@ -1,7 +1,7 @@
-SET NAMES UTF8;
-DROP DATABASE IF EXISTS bs;
-CREATE DATABASE bs CHARSET = UTF8;
-USE bs;
+-- SET NAMES UTF8;
+-- DROP DATABASE IF EXISTS bs;
+-- CREATE DATABASE bs CHARSET = UTF8;
+-- USE bs;
 
 /****** 用户登录 ******/
 CREATE TABLE bs_signin
@@ -80,8 +80,8 @@ CREATE TABLE bs_product
   spec      VARCHAR(64),
   pic       VARCHAR(128),
   #   价格
-  price     DECIMAL(10,2),
-  FOREIGN KEY (family_id) REFERENCES bs_product_family (family_id)
+  price     DECIMAL(10,2)
+--   FOREIGN KEY (family_id) REFERENCES bs_product_family (family_id)
 );
 
 /****** 商品图片 ******/
@@ -204,20 +204,20 @@ VALUES
  './images/product/product-zoom-4.jpg'),
 (NULL, 1, './images/product/product-5.jpg', './images/product/product-big-5.jpg',
  './images/product/product-zoom-5.jpg'),
-(NULL, 1, './images/product/product-1.jpg', './images/product/product-big-1.jpg',
- './images/product/product-zoom-1.jpg'),
-(NULL, 1, './images/product/product-2.jpg', './images/product/product-big-2.jpg',
- './images/product/product-zoom-2.jpg'),
-(NULL, 1, './images/product/product-3.jpg', './images/product/product-big-3.jpg',
- './images/product/product-zoom-3.jpg'),
-(NULL, 1, './images/product/product-4.jpg', './images/product/product-big-4.jpg',
- './images/product/product-zoom-4.jpg'),
-(NULL, 1, './images/product/product-5.jpg', './images/product/product-big-5.jpg',
- './images/product/product-zoom-5.jpg'),
 (NULL, 2, './images/product/product-2.jpg', './images/product/product-big-2.jpg',
+ './images/product/product-zoom-2.jpg'),
+(NULL, 3, './images/product/product-1.jpg', './images/product/product-big-1.jpg',
+ './images/product/product-zoom-1.jpg'),
+(NULL, 3, './images/product/product-2.jpg', './images/product/product-big-2.jpg',
  './images/product/product-zoom-2.jpg'),
 (NULL, 3, './images/product/product-3.jpg', './images/product/product-big-3.jpg',
  './images/product/product-zoom-3.jpg'),
+(NULL, 3, './images/product/product-4.jpg', './images/product/product-big-4.jpg',
+ './images/product/product-zoom-4.jpg'),
+(NULL, 3, './images/product/product-5.jpg', './images/product/product-big-5.jpg',
+ './images/product/product-zoom-5.jpg'),
+-- (NULL, 3, './images/product/product-3.jpg', './images/product/product-big-3.jpg',
+--  './images/product/product-zoom-3.jpg'),
 (NULL, 4, './images/product/product-4.jpg', './images/product/product-big-4.jpg',
  './images/product/product-zoom-4.jpg'),
 (NULL, 5, './images/product/product-5.jpg', './images/product/product-big-5.jpg',
@@ -227,7 +227,23 @@ VALUES
 (NULL, 7, './images/product/product-7.jpg', './images/product/product-big-7.jpg',
  './images/product/product-zoom-7.jpg'),
 (NULL, 8, './images/product/product-8.jpg', './images/product/product-big-8.jpg',
- './images/product/product-zoom-8.jpg');
+ './images/product/product-zoom-8.jpg'),
+(NULL, 9, './images/product/product-9.jpg', './images/product/product-big-9.jpg',
+ './images/product/product-zoom-9.jpg'),
+(NULL, 10, './images/product/product-1.jpg', './images/product/product-big-1.jpg',
+ './images/product/product-zoom-1.jpg'),
+(NULL, 11, './images/product/product-2.jpg', './images/product/product-big-2.jpg',
+ './images/product/product-zoom-2.jpg'),
+(NULL, 12, './images/product/product-3.jpg', './images/product/product-big-3.jpg',
+ './images/product/product-zoom-3.jpg'),
+(NULL, 13, './images/product/product-4.jpg', './images/product/product-big-4.jpg',
+ './images/product/product-zoom-4.jpg'),
+(NULL, 14, './images/product/product-5.jpg', './images/product/product-big-5.jpg',
+ './images/product/product-zoom-5.jpg'),
+(NULL, 15, './images/product/product-6.jpg', './images/product/product-big-6.jpg',
+ './images/product/product-zoom-6.jpg'),
+(NULL, 16, './images/product/product-7.jpg', './images/product/product-big-7.jpg',
+ './images/product/product-zoom-7.jpg');
 
 
 

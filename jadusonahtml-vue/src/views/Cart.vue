@@ -93,7 +93,7 @@
             }
         },
         mounted() {
-            this.axios.get('http://localhost:3003/user/getCarts').then(res => {
+            this.axios.get('http://babyshop.applinzi.com/user/getCarts').then(res => {
                 console.log('getCarts >>>', res);
                 this.tableData6 = res.data;
             })

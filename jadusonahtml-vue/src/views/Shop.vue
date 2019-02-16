@@ -58,7 +58,7 @@
         props: ['kw', 'page'],
         mounted() {
             this.axios.get(
-                'http://localhost:3003/shop',
+                'http://babyshop.applinzi.com/shop',
                 {params: {kword: this.kw, pno: this.page}}
             ).then(res => {
                 this.result = res.data;

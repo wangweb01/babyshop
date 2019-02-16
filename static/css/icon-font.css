@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url("../fonts/fontawesome-webfont.eot") format('embedded-opentype'),
+    url("../fonts/fontawesome-webfont.svg") format('svg'),
+    url("../fonts/fontawesome-webfont.ttf") format('truetype'),
+    url("../fonts/fontawesome-webfont.woff") format('woff'),
+    url("../fonts/fontawesome-webfont.woff2") format('woff2');
+}
+
+.fa {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-size: 14px;
+    color: #94C7EB;
+    margin-right: 5px;
+}
+
+.fa-star:before {
+    content: '\f005';
+}
+
+.fa-star-half-o:before {
+    content: '\f123';
+}
+
+.fa-star-o:before {
+    content: '\f006';
+}
+
+/* iconfont */
+@font-face {
+    font-family: 'IconFont';
+    src: url("../fonts/iconfont.eot") format("embedded-opentype"),
+    url("../fonts/iconfont.svg") format("svg"),
+    url("../fonts/iconfont.ttf") format("truetype"),
+    url("../fonts/iconfont.woff") format("woff"),
+    url("../fonts/iconfont.woff2") format("woff");
+}
+
+.zmdi {
+    font-family: IconFont;
+    font-style: normal;
+    font-size: 18px;
+}
+
+.zmdi-account-circle:before {
+    content: '\e002';
+}
+
+.zmdi-lock:before {
+    content: '\e001';
+}
+
+/* End iconfont */

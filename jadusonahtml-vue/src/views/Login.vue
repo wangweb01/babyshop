@@ -53,7 +53,7 @@
         methods: {
             signin() {
                 this.axios.post(
-                    'http://localhost:3003/user/signin',
+                    'http://babyshop.applinzi.com/user/signin',
                     Qs.stringify({uname: this.uname, upwd: this.upwd})
                 ).then(res => {
                     if (res.data.ok == 1) {
