@@ -64,7 +64,7 @@
                     } else {
                         this.status = false;
                         // console.log('res.data >>>', res.data)
-                        this.message({
+                        this.$message({
                             showClose: true,
                             message: '用户名或密码错误',
                             type: 'error'
