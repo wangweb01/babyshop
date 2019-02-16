@@ -22,6 +22,7 @@
                     <span class="input-group-addon">
                         <i v-if="status" class="zmdi zmdi-lock"></i>
                         <strong class="error" v-else>账号或密码错误</strong>
+                        <!--<el-button :plain="true" @click="open8">错误</el-button>-->
                     </span>
                 </div>
                 <div>
@@ -45,11 +46,13 @@
                 status: true
             }
         },
-        watch: {
-            back(val) {
-                console.log('aa>>>', val)
-            }
-        },
+        /*
+                watch: {
+                    back(val) {
+                        console.log('aa>>>', val)
+                    }
+                },
+        */
         methods: {
             signin() {
                 this.axios.post(
@@ -60,7 +63,12 @@
                         this.$router.push('/' + decodeURIComponent(this.back));
                     } else {
                         this.status = false;
-                        console.log('res.data >>>', res.data)
+                        // console.log('res.data >>>', res.data)
+                        this.message({
+                            showClose: true,
+                            message: '用户名或密码错误',
+                            type: 'error'
+                        })
                     }
                 })
             }
